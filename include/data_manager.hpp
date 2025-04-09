@@ -1,4 +1,4 @@
-#define pragma once
+#pragma once
 
 #include "data_loader.hpp"
 #include <vector>

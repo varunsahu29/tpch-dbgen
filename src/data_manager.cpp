@@ -37,24 +37,22 @@ void DataManager::loadAllTables()
         regions = DataLoader::loadRegionData(regionFile);
         std::cout << "Loaded " << regions.size() << " region records.\n"; });
 
-    /// Submit the monitoring task to the thread pool
-    pool.enqueue([&]()
-                       {
-                           f1.get();
-                           f2.get();
-                           f3.get();
-                           f4.get();
-                           f5.get();
-                           f6.get();
-
-                           {
-                               std::lock_guard<std::mutex> lock(mtx);
-                               dataLoaded = true;
-                               std::cout << "All tables loaded successfully.\n";
-                           }
-                           cv.notify_all();        // Notify all waiting threads that data is loaded.
-                           processQueuedQueries(); // Process any queued queries after data is loaded.
-                       });
+    // Wait for all loading tasks to finish.
+    f1.get();
+    f2.get();
+    f3.get();
+    f4.get();
+    f5.get();
+    f6.get();
+    std::cout << "All tables loaded successfully.\n";
+    {
+        std::lock_guard<std::mutex> lock(mtx);
+        dataLoaded = true;
+    }
+    cv.notify_all(); // Notify all waiting threads that data is loaded.
+    processQueuedQueries(); // Process any queued queries.
+    std::cout << "Queued queries processed.\n";
+    std::cout << "Data loading complete.\n";
 }
 
 void DataManager::processQuery(std::function<void()> query)

@@ -53,4 +53,5 @@ public:
     static std::vector<Supplier> loadSupplierData(const std::string &filePath);
     static std::vector<Nation> loadNationData(const std::string &filePath);
     static std::vector<Region> loadRegionData(const std::string &filePath);
+    static std::vector<std::string> splitLine(const std::string &line, char delimiter='|');
 };

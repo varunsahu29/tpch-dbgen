@@ -3,8 +3,16 @@
 #include <sstream>
 #include <iostream>
 #include <stdexcept>
-#include "split_lines.cpp"
 
+std::vector<std::string> DataLoader::splitLine(const std::string &line, char delimiter) {
+    std::vector<std::string> tokens;
+    std::istringstream stream(line);
+    std::string token;
+    while (std::getline(stream, token, delimiter)) {
+        tokens.push_back(token);
+    }
+    return tokens;
+}
 
 std::vector<Customer> DataLoader::loadCustomerData(const std::string &filePath) {
     std::vector<Customer> customers;
