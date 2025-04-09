@@ -1,12 +1,6 @@
 ## Setup
 
-### Step 1: Make the Script Executable
-Before running the script, ensure it is executable. Run the following command in your terminal:
-
-```bash
-chmod +x generate_tpch.sh
-```
-### Step 2: Run the Script
+### Step 1: Run the Script
 You can now generate the TPC-H data by running the script.
 #### Option 1: Use Default Settings
 To use the default scale factor and output directory, simply run:
