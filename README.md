@@ -2,7 +2,7 @@
 This is for quick testing to check code working
 ### Step 1: Run the Script in Teminal
 ```bash
-./generate_tpch.sh
+./generate_tpch.sh 0.1
 ```
 ### Step 2: Run this input
 ```
@@ -13,7 +13,7 @@ This is for quick testing to check code working
             --supplier ./tpch_data/supplier.tbl \
             --nation ./tpch_data/nation.tbl \
             --regionfile ./tpch_data/region.tbl \
-            --result ./tpch_data/result.txt
+            --result ./result.txt
 ```
 
 ## Setup
