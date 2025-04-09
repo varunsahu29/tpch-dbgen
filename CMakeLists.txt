@@ -17,7 +17,6 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 # Collect all source files.
 set(SOURCES
     src/main.cpp
-    utils/split_lines.cpp
     src/data_loader.cpp
     src/data_manager.cpp
 )
