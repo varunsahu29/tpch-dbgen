@@ -3,4 +3,4 @@ tpch-dbgen/
 build/
 .vscode/settings.json
 Zettabolt
-*/result.txt
+*result.txt
