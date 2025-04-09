@@ -1,3 +1,21 @@
+## Quick testing
+This is for quick testing to check code working
+### Step 1: Run the Script in Teminal
+```bash
+./generate_tpch.sh
+```
+### Step 2: Run this input
+```
+./Zettabolt --region ASIA --start-date 1994-01-01 --end-date 1995-01-01 --threads 4 \
+            --customer ./tpch_data/customer.tbl \
+            --orders ./tpch_data/orders.tbl \
+            --lineitem ./tpch_data/lineitem.tbl \
+            --supplier ./tpch_data/supplier.tbl \
+            --nation ./tpch_data/nation.tbl \
+            --regionfile ./tpch_data/region.tbl \
+            --result ./tpch_data/result.txt
+```
+
 ## Setup
 
 ### Step 1: Run the Script
