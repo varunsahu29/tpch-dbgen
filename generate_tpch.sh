@@ -19,6 +19,7 @@
 SCALE_FACTOR=${1:-1}
 OUTPUT_DIR=${2:-tpch_data}
 TPCH_DIR="tpch-dbgen"
+BUILD_DIR="build"
 
 # Check if the tpch-dbgen directory exists
 if [ ! -d "$TPCH_DIR" ]; then
@@ -71,3 +72,26 @@ mv "$TPCH_DIR"/*.tbl "$OUTPUT_DIR"/
 echo "TPC‑H data generation complete."
 echo "Generated table files have been moved to the output folder: $OUTPUT_DIR"
 ls -1 "$OUTPUT_DIR"
+
+# Build the current project (Zettabolt)
+echo "Building the current project (Zettabolt)..."
+
+# Create the build directory if it does not exist
+mkdir -p "$BUILD_DIR"
+cd "$BUILD_DIR" || exit 1
+
+# Run CMake to configure and build the project
+cmake ..
+if [ $? -ne 0 ]; then
+    echo "Error: CMake configuration failed."
+    exit 1
+fi
+
+make
+if [ $? -ne 0 ]; then
+    echo "Error: Build failed for Zettabolt. Please check the make output for errors."
+    exit 1
+fi
+
+echo "Build successful for Zettabolt."
+echo "The Zettabolt executable is located in: $BUILD_DIR/bin"
